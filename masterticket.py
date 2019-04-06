@@ -17,3 +17,18 @@ total_price = num_ticktes * TICKET_PRICE
 
 # Output the price to the screen
 print("The total price is ${}".format(total_price))
+
+# Prompt user if they want to proceed Y/N
+should_proceed = input("Do you want to proceed? : Y/N  ")
+
+# if they want to proceed
+if should_proceed.lower() == "y":
+    # print out SOLD! to confirm purchase
+    # and decrement tkts remaining
+    print("SOLD!")
+    tickets_remaining -= num_ticktes
+
+# Otherwise...
+else:
+    # thank them by name
+    print("Thank you anyways {}!".format(name))
