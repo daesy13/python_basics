@@ -2,33 +2,37 @@ TICKET_PRICE = 10
 
 tickets_remaining = 100
 
-# Output how many tickets remaing using the tickets_remaining variable
-print("There are {} tickets remaing".format(tickets_remaining))
+while tickets_remaining:
 
-# Gather the user's name and assign it to a new variable
-name = input("What is your name? ")
+    print("There are {} tickets remaing".format(tickets_remaining))
+    name = input("What is your name? ")
+    num_ticktes = input("How many tickets would you like, {}? ".format(name))
+    # Expect a ValueError to happen and handle it appropriately...remember to
+    # test it out
+    try:
+        num_ticktes = int(num_ticktes)
+        # Raise a ValueError if the request is for more tickets than are avilable
+        if num_ticktes > tickets_remaining:
+            raise ValueError("There are only {} tickets remaining".format(tickets_remaining))
+    except ValueError as err:
+        print("Oh no, we ran into an issue. Please try again".format(err))
+    else:
+        total_price = num_ticktes * TICKET_PRICE
+        print("The total price is ${}".format(total_price))
+        should_proceed = input("Do you want to proceed? : Y/N  ")
+        # Gather credit card information and process it
+        if should_proceed.lower() == "y":
+            print("SOLD!")
+            tickets_remaining -= num_ticktes
+        else:
+            print("Thank you anyways {}!".format(name))
 
-# Prompt the user by their name and ask how many tkts they would like
-num_ticktes = input("How many tickets would you like, {}? ".format(name))
-num_ticktes = int(num_ticktes)
+# Notify the user that the tickets are sold out
+print("Sorry, tickets are sold out")
 
-# Calculate the price(#tkts * price) and assign it to a variable
-total_price = num_ticktes * TICKET_PRICE
 
-# Output the price to the screen
-print("The total price is ${}".format(total_price))
 
-# Prompt user if they want to proceed Y/N
-should_proceed = input("Do you want to proceed? : Y/N  ")
 
-# if they want to proceed
-if should_proceed.lower() == "y":
-    # print out SOLD! to confirm purchase
-    # and decrement tkts remaining
-    print("SOLD!")
-    tickets_remaining -= num_ticktes
 
-# Otherwise...
-else:
-    # thank them by name
-    print("Thank you anyways {}!".format(name))
+
+

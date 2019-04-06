@@ -16,18 +16,18 @@ import sys
 
 # Prints to standard output.
 def wrapLines(line_length, words):
-    # IMPLEMENTATION GOES HERE
-    curr_line = ""
-    result = []
-    for word in words:
-        if len(curr_line) + len(word) + 1 >= line_length:
-                result.append(curr_line)
-                curr_line = ""
-            else:
-                curr_line += " " + word
-    if curr_line:
-        result.append(currline)
-    return result
+  # IMPLEMENTATION GOES HERE
+  curr_line = ""
+  result = []
+  for word in words:
+    if len(curr_line) + len(word) + 1 >= line_length:
+      result.append(curr_line)
+      curr_line = ""
+    else:
+      curr_line += " " + word
+  if curr_line:
+    result.append(curr_line)
+  return result
 
 # DO NOT MODIFY BELOW THIS LINE
 def main():
