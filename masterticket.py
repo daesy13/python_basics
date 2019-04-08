@@ -1,6 +1,14 @@
+SERVICE_CHARGE = 2
 TICKET_PRICE = 10
 
 tickets_remaining = 100
+
+# Create the calculate_price function. It takes number of tickets and returns
+# num_ticktes * TICKET_PRICE
+def calculate_price(num):
+    # Create a constant for the service charge
+    # Add the service charge to our result
+    return (num * TICKET_PRICE) + SERVICE_CHARGE
 
 while tickets_remaining:
 
@@ -17,7 +25,7 @@ while tickets_remaining:
     except ValueError as err:
         print("Oh no, we ran into an issue. Please try again".format(err))
     else:
-        total_price = num_ticktes * TICKET_PRICE
+        total_price = calculate_price(num_ticktes )
         print("The total price is ${}".format(total_price))
         should_proceed = input("Do you want to proceed? : Y/N  ")
         # Gather credit card information and process it
@@ -29,6 +37,9 @@ while tickets_remaining:
 
 # Notify the user that the tickets are sold out
 print("Sorry, tickets are sold out")
+
+
+
 
 
 
